@@ -1,0 +1,138 @@
+:root {
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-pale: #f5e9c8;
+  --black: #080808;
+  --black-soft: #111111;
+  --black-mid: #1a1a1a;
+  --white: #faf8f3;
+  --text-muted: #888880;
+}
+
+body {
+  margin: 0; padding: 0; background-color: var(--white);
+  font-family: Arial, sans-serif; color: var(--black-soft);
+}
+header {
+  background-color: var(--black); color: var(--white);
+  padding: 20px; text-align: center; font-family: 'Tenor Sans', sans-serif;
+  letter-spacing: 2px;
+}
+.admin-container {
+  max-width: 1000px; margin: 40px auto; padding: 0 20px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+}
+@media (max-width: 768px) { .admin-container { grid-template-columns: 1fr; } }
+
+.panel-box {
+  background: #fff; padding: 25px; border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 3px solid var(--gold);
+}
+.panel-box h2 {
+  font-family: 'Tenor Sans', sans-serif; font-size: 1.2rem;
+  margin-top: 0; margin-bottom: 20px; text-transform: uppercase; border-bottom: 1px solid #eee; padding-bottom: 10px;
+}
+.form-group { margin-bottom: 15px; display: flex; flex-direction: column; gap: 5px; }
+.form-group label { font-size: 0.85rem; font-weight: bold; color: var(--black-mid); }
+.form-group input, .form-group select, .form-group textarea {
+  padding: 10px; border: 1px solid #ccc; border-radius: 4px;
+}
+.checkbox-group { flex-direction: row; align-items: center; gap: 10px; margin: 15px 0; }
+
+.btn-save {
+  width: 100%; background: var(--black-soft); color: #fff; border: none;
+  padding: 12px; text-transform: uppercase; font-family: 'Tenor Sans';
+  letter-spacing: 1px; cursor: pointer; transition: background 0.3s;
+}
+.btn-save:hover { background: var(--gold); }
+
+/* Lista de gerenciamento */
+.product-list-item {
+  display: flex; gap: 15px; align-items: center; border-bottom: 1px solid #eee; padding: 10px 0;
+}
+.product-list-item img { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; }
+.product-list-details { flex-grow: 1; }
+.product-list-actions { display: flex; gap: 10px; }
+.action-btn { background: none; border: none; cursor: pointer; padding: 5px; }
+.edit-btn { color: #2980b9; }
+.delete-btn { color: #c0392b; }
+
+.hidden { display: none; }
+.preview-img { width: 100%; max-height: 150px; object-fit: contain; margin-top: 10px; background: #f9f9f9; border-radius: 4px; }
+
+
+/* CSS ADICIONAL PÓS TELA DE LOGIN */
+
+/* Admin header extra styles */
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 64px;
+  background: #0d0d0d;
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.admin-topbar-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: #c9a84c;
+}
+
+.admin-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  font-family: 'Tenor Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.topbar-btn svg { width: 14px; height: 14px; }
+
+.btn-back-store {
+  background: transparent;
+  border: 1px solid rgba(201,168,76,0.3);
+  color: #c9a84c;
+}
+
+.btn-back-store:hover {
+  background: rgba(201,168,76,0.08);
+  border-color: #c9a84c;
+}
+
+.btn-logout {
+  background: transparent;
+  border: 1px solid rgba(180, 60, 60, 0.35);
+  color: #c97070;
+}
+
+.btn-logout:hover {
+  background: rgba(180, 60, 60, 0.1);
+  border-color: #c97070;
+}
+
+.admin-user-info {
+  font-size: 0.7rem;
+  color: #555;
+  letter-spacing: 0.05em;
+  font-family: 'Tenor Sans', sans-serif;
+}

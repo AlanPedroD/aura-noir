@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura Noir — Adquirir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Tenor+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/produtos.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Nav + Sidebar + Modal injetados por nav.js via produtos.js -->
+
+  <section class="perfume-section" id="collection">
+    <div class="section-header">
+      <span>COLEÇÃO</span>
+      <h2>Nossas Essências</h2>
+      <div style="width:50px;height:1px;background:var(--gold);margin:15px auto 0;"></div>
+    </div>
+    <div class="products-grid" id="productsGrid">
+      <p style="grid-column:1/-1;font-family:'Cormorant Garamond';color:var(--text-muted);">Carregando coleção de luxo...</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="cta">
+    <div class="cta-glow"></div>
+    <div class="cta-inner reveal visible">
+      <span class="section-label">Edição Limitada</span>
+      <h2 class="cta-title">Sua <em>aura</em><br>começa aqui.</h2>
+      <p class="cta-sub">Apenas 500 frascos por edição. Cada um numerado e assinado pelo perfumista. Porque o extraordinário não pode ser comum.</p>
+      <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
+        <a href="/index.html" class="btn-primary">Voltar ao Início</a>
+        <a href="index.html#notas" class="btn-ghost">Conhecer as Notas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Aura Noir</div>
+    <ul class="footer-links">
+      <li><a href="index.html#collection">Coleção</a></li>
+      <li><a href="index.html#essence">Sobre</a></li>
+      <li><a href="index.html#ritual">Dicas</a></li>
+      <li><a href="#">Contato</a></li>
+      <li><a href="#">Política</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Aura Noir. Todos os direitos reservados.</div>
+  </footer>
+
+  <script type="module" src="../assets/js/produtos.js"></script>
+</body>
+</html>
