@@ -215,7 +215,7 @@ function initCartLogic() {
     if (discount > 0) message += `💚 *Desconto Pix (5%):* - R$ ${discount.toFixed(2).replace('.', ',')}\n`;
     message += `🛍️ *VALOR TOTAL:* R$ ${finalTotal.toFixed(2).replace('.', ',')}`;
 
-    const whatsappNumber = "5511999999999";
+    const whatsappNumber = "5581986953009";
     window.open(`https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`, '_blank');
 
     clearCart();
