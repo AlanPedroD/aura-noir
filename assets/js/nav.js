@@ -311,3 +311,41 @@ function updateCheckoutSummary() {
 
   document.getElementById('modalTotal').textContent = `R$ ${(subtotal - discount).toFixed(2).replace('.', ',')}`;
 }
+
+// ── Toast de confirmação ──────────────────────────────────────────────────────
+export function showCartToast(message = '✔ Produto adicionado ao carrinho') {
+  document.getElementById('cartToast')?.remove();
+
+  const toast = document.createElement('div');
+  toast.id = 'cartToast';
+  toast.textContent = message;
+  Object.assign(toast.style, {
+    position:   'fixed',
+    bottom:     '24px',
+    right:      '24px',
+    background: '#fff',
+    color:      '#111',
+    border:     '0.5px solid rgba(0,0,0,0.12)',
+    borderLeft: '3px solid #1D9E75',
+    borderRadius: '8px',
+    padding:    '12px 20px',
+    fontSize:   '14px',
+    fontFamily: "'Tenor Sans', sans-serif",
+    zIndex:     '9999',
+    opacity:    '0',
+    transform:  'translateY(8px)',
+    transition: 'opacity 0.25s ease, transform 0.25s ease',
+  });
+
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => {
+    toast.style.opacity   = '1';
+    toast.style.transform = 'translateY(0)';
+  });
+
+  setTimeout(() => {
+    toast.style.opacity   = '0';
+    toast.style.transform = 'translateY(8px)';
+    setTimeout(() => toast.remove(), 300);
+  }, 2500);
+}

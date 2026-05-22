@@ -1,5 +1,5 @@
 // script.js — Página inicial (index.html)
-import { injectNav, updateCartBadge, renderCartItems } from './nav.js';
+import { injectNav, updateCartBadge, renderCartItems, showCartToast } from './nav.js';
 import { addToCart } from './cart.js';
 import { injectProductModal, openProductModal } from './productModal.js';
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
@@ -113,11 +113,11 @@ function renderFeaturedCard(prod, grid) {
 
   // Clique no botão → adiciona ao carrinho direto
   card.querySelector('.featured-add-btn').addEventListener('click', () => {
-    addToCart(prod);
-    updateCartBadge();
-    renderCartItems();
-    document.getElementById('cartSidebar')?.classList.add('open');
-  });
+  addToCart(prod);
+  updateCartBadge();
+  renderCartItems();
+  showCartToast();
+});
 
   grid.appendChild(card);
   observer.observe(card);

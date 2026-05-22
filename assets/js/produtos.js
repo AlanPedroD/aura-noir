@@ -1,5 +1,5 @@
 // produtos.js — Página de produtos
-import { injectNav, renderCartItems, updateCartBadge } from './nav.js';
+import { injectNav, renderCartItems, updateCartBadge, showCartToast } from './nav.js';
 import { addToCart } from './cart.js';
 import { injectProductModal, openProductModal } from './productModal.js';
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
@@ -84,11 +84,11 @@ function renderProductCard(prod) {
 
   // Clique no botão → adiciona ao carrinho direto
   card.querySelector('.add-to-cart-btn').addEventListener('click', () => {
-    addToCart(prod);
-    updateCartBadge();
-    renderCartItems();
-    document.getElementById('cartSidebar')?.classList.add('open');
-  });
+  addToCart(prod);
+  updateCartBadge();
+  renderCartItems();
+  showCartToast();
+});
 
   productsGrid.appendChild(card);
 }
