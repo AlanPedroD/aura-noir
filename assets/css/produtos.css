@@ -181,6 +181,12 @@
 .checkout-btn { width: 100%; background: var(--black-soft); color: var(--white); border: none; padding: 14px; font-family: 'Tenor Sans', sans-serif; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: background 0.3s; }
 .checkout-btn:hover { background: var(--gold); }
 
+/* Desabilita o botão de diminuir a quantidade quando for = 1 */
+.qty-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
 /* ── Modal de Checkout ────────────────────────────────────────────────────── */
 .modal-overlay {
   position: fixed;
