@@ -7,7 +7,12 @@
   background-color: var(--white);
   text-align: center;
 }
-.section-header { margin-bottom: 50px; margin-top: 20px; }
+.section-header { 
+  margin-bottom: 50px; 
+  padding-top: 40px;
+}
+
+
 .section-header span {
   font-family: 'Tenor Sans', sans-serif;
   text-transform: uppercase;
@@ -20,7 +25,6 @@
   font-size: 2.5rem;
   font-weight: 300;
   color: var(--black);
-  margin-top: 5px;
 }
 
 /* ── Grid de Produtos ─────────────────────────────────────────────────────── */
@@ -298,7 +302,6 @@
 
 /* ── Tablet (≤ 900px) ─────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .perfume-section { padding: 60px 24px; }
 
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -311,13 +314,6 @@
 
 /* ── Mobile (≤ 600px) ─────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
-  .perfume-section { padding: 48px 16px; }
-
-  /* .products-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  } */
-
   .product-image-wrapper { height: 240px; }
 
   .price-action-row {
@@ -336,6 +332,12 @@
   .pdm-image-side { min-height: 240px; }
   .pdm-content-side { padding: 28px 20px 24px; }
   .pdm-name { font-size: 1.5rem; }
+}
+
+@media(max-width: 361px){
+  .section-header{
+    padding-top: 60px;
+  }
 }
 
 @media(max-width: 320px){

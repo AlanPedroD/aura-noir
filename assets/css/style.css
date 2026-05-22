@@ -65,6 +65,7 @@ nav.nav-produtos {
 }
 nav.nav-produtos.scrolled {
   background: rgba(8, 8, 8, 0.97) !important;
+  margin-bottom: 10% !important;
 }
 
 /* ── BOTÃO HAMBÚRGUER ─────────────────────────────────────────────────────── */
