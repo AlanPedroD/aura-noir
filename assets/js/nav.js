@@ -116,19 +116,19 @@ export function injectNav(activePage = '') {
   document.body.insertAdjacentHTML('beforeend', modalHTML);
 
   lucide.createIcons();
-initNavLogic();
-// Aguarda o DOM processar o HTML inserido antes de registrar eventos
-requestAnimationFrame(() => {
-  initCartLogic();
-  updateCartBadge();
-});
+  initNavLogic();
+  // Aguarda o DOM processar o HTML inserido antes de registrar eventos
+  requestAnimationFrame(() => {
+    initCartLogic();
+    updateCartBadge();
+  });
 }
 
 // ── Lógica do nav (scroll + menu mobile) ─────────────────────────────────────
 function initNavLogic() {
-  const nav        = document.getElementById('nav');
+  const nav = document.getElementById('nav');
   const menuToggle = document.getElementById('menuToggle');
-  const navLinks   = document.getElementById('navLinks');
+  const navLinks = document.getElementById('navLinks');
 
   // Efeito scroll
   window.addEventListener('scroll', () => {
@@ -153,7 +153,7 @@ function initNavLogic() {
   onAuthStateChanged(auth, (user) => {
     const userBtn = document.getElementById('userNavBtn');
     if (userBtn) {
-      userBtn.href  = user ? '/pages/admin.html' : '/pages/login.html';
+      userBtn.href = user ? '/pages/admin.html' : '/pages/login.html';
       userBtn.title = user ? 'Ir para o Painel Admin' : 'Login Administrativo';
     }
   });
@@ -161,14 +161,14 @@ function initNavLogic() {
 
 // ── Lógica completa do carrinho ───────────────────────────────────────────────
 function initCartLogic() {
-  const cartSidebar        = document.getElementById('cartSidebar');
-  const openCartBtn        = document.getElementById('openCartBtn');
-  const closeCartBtn       = document.getElementById('closeCartBtn');
-  const goToCheckoutBtn    = document.getElementById('goToCheckoutBtn');
-  const closeModalBtn      = document.getElementById('closeModalBtn');
-  const checkoutModal      = document.getElementById('checkoutModal');
+  const cartSidebar = document.getElementById('cartSidebar');
+  const openCartBtn = document.getElementById('openCartBtn');
+  const closeCartBtn = document.getElementById('closeCartBtn');
+  const goToCheckoutBtn = document.getElementById('goToCheckoutBtn');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const checkoutModal = document.getElementById('checkoutModal');
   const paymentMethodSelect = document.getElementById('paymentMethod');
-  const checkoutForm       = document.getElementById('checkoutForm');
+  const checkoutForm = document.getElementById('checkoutForm');
 
   openCartBtn?.addEventListener('click', () => {
     renderCartItems();
@@ -192,13 +192,13 @@ function initCartLogic() {
 
   checkoutForm?.addEventListener('submit', (e) => {
     e.preventDefault();
-    const cart    = getCart();
-    const name    = document.getElementById('clientName').value;
+    const cart = getCart();
+    const name = document.getElementById('clientName').value;
     const address = document.getElementById('clientAddress').value;
     const payment = paymentMethodSelect.value;
-    const notes   = document.getElementById('clientNotes').value || 'Nenhuma';
-    const subtotal   = calculateSubtotal(cart);
-    const discount   = payment === 'Pix' ? subtotal * 0.05 : 0;
+    const notes = document.getElementById('clientNotes').value || 'Nenhuma';
+    const subtotal = calculateSubtotal(cart);
+    const discount = payment === 'Pix' ? subtotal * 0.05 : 0;
     const finalTotal = subtotal - discount;
 
     let message = `*✨ NOVO PEDIDO - AURA NOIR Parfums*\n\n`;
@@ -237,9 +237,9 @@ function initCartLogic() {
 
 // ── Renderiza itens na sidebar ────────────────────────────────────────────────
 export function renderCartItems() {
-  const cart          = getCart();
+  const cart = getCart();
   const cartItemsList = document.getElementById('cartItemsList');
-  const cartSubtotal  = document.getElementById('cartSubtotal');
+  const cartSubtotal = document.getElementById('cartSubtotal');
   if (!cartItemsList) return;
 
   cartItemsList.innerHTML = '';
@@ -251,22 +251,22 @@ export function renderCartItems() {
       const div = document.createElement('div');
       div.className = 'cart-item';
       div.innerHTML = `
-        <img src="${item.imagemUrl}" class="cart-item-img" alt="${item.nome}">
-        <div class="cart-item-details">
-          <div class="cart-item-name">${item.nome}</div>
-          <div class="cart-item-price">R$ ${parseFloat(item.preco).toFixed(2).replace('.', ',')}</div>
-          <div class="cart-item-qty-control">
-            <button class="qty-btn dec-btn" data-id="${item.id}">-</button>
-            <span style="font-family:'Tenor Sans'">${item.quantity}</span>
-            <button class="qty-btn inc-btn" data-id="${item.id}">+</button>
-          </div>
-        </div>
-        <button class="remove-item-btn" data-id="${item.id}">
-          <i data-lucide="trash-2" style="width:18px;"></i>
-        </button>
-      `;
+  <img src="${item.imagemUrl}" class="cart-item-img" alt="${item.nome}">
+  <div class="cart-item-details">
+    <div class="cart-item-name">${item.nome}</div>
+    <div class="cart-item-price">R$ ${parseFloat(item.preco).toFixed(2).replace('.', ',')}</div>
+    <div class="cart-item-qty-control">
+      <button class="qty-btn dec-btn" data-id="${item.id}" ${item.quantity <= 1 ? 'disabled' : ''}>-</button>
+      <span style="font-family:'Tenor Sans'">${item.quantity}</span>
+      <button class="qty-btn inc-btn" data-id="${item.id}">+</button>
+    </div>
+  </div>
+  <button class="remove-item-btn" data-id="${item.id}">
+    <i data-lucide="trash-2" style="width:18px;"></i>
+  </button>
+`;
       div.querySelector('.dec-btn').addEventListener('click', () => { changeQuantity(item.id, -1); renderCartItems(); updateCartBadge(); });
-      div.querySelector('.inc-btn').addEventListener('click', () => { changeQuantity(item.id,  1); renderCartItems(); updateCartBadge(); });
+      div.querySelector('.inc-btn').addEventListener('click', () => { changeQuantity(item.id, 1); renderCartItems(); updateCartBadge(); });
       div.querySelector('.remove-item-btn').addEventListener('click', () => { removeFromCart(item.id); renderCartItems(); updateCartBadge(); });
       cartItemsList.appendChild(div);
     });
@@ -280,7 +280,7 @@ export function renderCartItems() {
 
 // ── Atualiza badge do ícone ───────────────────────────────────────────────────
 export function updateCartBadge() {
-  const cart  = getCart();
+  const cart = getCart();
   const total = getTotalItems(cart);
   const badge = document.getElementById('cartCount');
   if (!badge) return;
@@ -294,10 +294,10 @@ export function updateCartBadge() {
 
 // ── Resumo no modal de checkout ───────────────────────────────────────────────
 function updateCheckoutSummary() {
-  const cart     = getCart();
+  const cart = getCart();
   const subtotal = calculateSubtotal(cart);
-  const payment  = document.getElementById('paymentMethod')?.value;
-  let discount   = 0;
+  const payment = document.getElementById('paymentMethod')?.value;
+  let discount = 0;
 
   document.getElementById('modalSubtotal').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
 
@@ -320,31 +320,31 @@ export function showCartToast(message = '✔ Produto adicionado ao carrinho') {
   toast.id = 'cartToast';
   toast.textContent = message;
   Object.assign(toast.style, {
-    position:   'fixed',
-    bottom:     '24px',
-    right:      '24px',
+    position: 'fixed',
+    bottom: '24px',
+    right: '24px',
     background: '#fff',
-    color:      '#111',
-    border:     '0.5px solid rgba(0,0,0,0.12)',
+    color: '#111',
+    border: '0.5px solid rgba(0,0,0,0.12)',
     borderLeft: '3px solid #1D9E75',
     borderRadius: '8px',
-    padding:    '12px 20px',
-    fontSize:   '14px',
+    padding: '12px 20px',
+    fontSize: '14px',
     fontFamily: "'Tenor Sans', sans-serif",
-    zIndex:     '9999',
-    opacity:    '0',
-    transform:  'translateY(8px)',
+    zIndex: '9999',
+    opacity: '0',
+    transform: 'translateY(8px)',
     transition: 'opacity 0.25s ease, transform 0.25s ease',
   });
 
   document.body.appendChild(toast);
   requestAnimationFrame(() => {
-    toast.style.opacity   = '1';
+    toast.style.opacity = '1';
     toast.style.transform = 'translateY(0)';
   });
 
   setTimeout(() => {
-    toast.style.opacity   = '0';
+    toast.style.opacity = '0';
     toast.style.transform = 'translateY(8px)';
     setTimeout(() => toast.remove(), 300);
   }, 2500);
